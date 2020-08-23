@@ -2,65 +2,434 @@ backend:
   name: git-gateway
   branch: master
   commit_messages:
-    create: 'Create {{collection}} “{{slug}}”'
-    update: 'Update {{collection}} “{{slug}}”'
-    delete: 'Delete {{collection}} “{{slug}}”'
-    uploadMedia: '[skip ci] Upload “{{path}}”'
-    deleteMedia: '[skip ci] Delete “{{path}}”'
+    create: "Create {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
+    delete: "Delete {{collection}} “{{slug}}”"
+    uploadMedia: "[skip ci] Upload “{{path}}”"
+    deleteMedia: "[skip ci] Delete “{{path}}”"
 
 media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: "blog"
-    label: "Blog"
-    folder: "src/pages/blog"
+  - name: "projects"
+    label: "项目"
+    folder: "src/pages/projects"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Featured Post", name: "featuredpost", widget: "boolean"}
-      - {label: "Featured Image", name: "featuredimage", widget: image}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Tags", name: "tags", widget: "list"}
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "project",
+        }
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "发布日期", name: "date", widget: "datetime" }
+      - { label: "说明", name: "description", widget: "text" }
+      # - {
+      #     label: "项目",
+      #     name: "events",
+      #     widget: "list",
+      #     fields:
+      #       [
+      #         { label: "图片", name: "image", widget: "image" },
+      #         { label: "链接", name: "links",  widget: "object",
+      #           fields:
+      #             [
+      #               { label: "链接名称", name: "linkText", widget: "string" },
+      #               { label: "链接地址", name: "linkURL", widget: "string" },
+      #             ]
+      #         },
+      #         { label: "项目名称", name: "name", widget: "string" },
+      #         {
+      #           label: "项目简介",
+      #           name: "eventDescription",
+      #           widget: "string",
+      #         },
+      #         { label: "详细描述", name: "text", widget: "string" },
+      #       ],
+      #   },
+      - { label: "重要比赛", name: "featuredpost", widget: "boolean" }
+      - { label: "图片", name: "featuredimage", widget: image }
+      - { label: "正文", name: "body", widget: "markdown" }
+      - { label: "标签", name: "tags", widget: "list" }
+
+  - name: "kids"
+    label: "少儿编程"
+    folder: "src/pages/kids"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "kids-post",
+        }
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "发布日期", name: "date", widget: "datetime" }
+      - { label: "说明", name: "description", widget: "text" }
+      - { label: "重要培训", name: "featuredpost", widget: "boolean" }
+      - { label: "图片", name: "featuredimage", widget: image }
+      - { label: "正文", name: "body", widget: "markdown" }
+      - { label: "标签", name: "tags", widget: "list" }
+
+  - name: "twolang"
+    label: "程序员2郎"
+    folder: "src/pages/twolang"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "twolang-post",
+        }
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "发布日期", name: "date", widget: "datetime" }
+      - { label: "说明", name: "description", widget: "text" }
+      - { label: "重要资讯", name: "featuredpost", widget: "boolean" }
+      - { label: "图片", name: "featuredimage", widget: image }
+      - { label: "正文", name: "body", widget: "markdown" }
+      - { label: "标签", name: "tags", widget: "list" }
+
+  - name: "dailycoding"
+    label: "编程日课"
+    folder: "src/pages/dailycoding"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "dailycoding-post",
+        }
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "发布日期", name: "date", widget: "datetime" }
+      - { label: "说明", name: "description", widget: "text" }
+      - { label: "重要公告", name: "featuredpost", widget: "boolean" }
+      - { label: "图片", name: "featuredimage", widget: image }
+      - { label: "正文", name: "body", widget: "markdown" }
+      - { label: "标签", name: "tags", widget: "list" }
 
   - name: "pages"
-    label: "Pages"
+    label: "页面"
     files:
       - file: "src/pages/index.md"
-        label: "Landing Page"
-        name: "index"
+        label: "首页"
+        name: "home"
         fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
-          - {label: Title, name: title, widget: string}
-          - {label: Image, name: image, widget: image}
-          - {label: Heading, name: heading, widget: string}
-          - {label: Subheading, name: subheading, widget: string}
-          - {label: Mainpitch, name: mainpitch, widget: object, fields: [{label: Title, name: title, widget: string}, {label: Description, name: description, widget: text}]}
-          - {label: Description, name: description, widget: string}
-          - {label: Intro, name: intro, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Text, name: text, widget: text}]}]}
-          - {label: Main, name: main, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Image1, name: image1, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image2, name: image2, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image3, name: image3, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}]}
-      - file: "src/pages/about/index.md"
-        label: "About"
-        name: "about"
-        fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Body", name: "body", widget: "markdown"}
-      - file: "src/pages/products/index.md"
-        label: "Products Page"
-        name: "products"
-        fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page"}
-          - {label: Title, name: title, widget: string}
-          - {label: Image, name: image, widget: image}
-          - {label: Heading, name: heading, widget: string}
-          - {label: Description, name: description, widget: string}
-          - {label: Intro, name: intro, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Text, name: text, widget: text}]}]}
-          - {label: Main, name: main, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Image1, name: image1, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image2, name: image2, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image3, name: image3, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}]}
-          - {label: Testimonials, name: testimonials, widget: list, fields: [{label: Quote, name: quote, widget: string}, {label: Author, name: author, widget: string}]}
-          - {label: Full_image, name: full_image, widget: image}
-          - {label: Pricing, name: pricing, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: string}, {label: Plans, name: plans, widget: list, fields: [{label: Plan, name: plan, widget: string}, {label: Price, name: price, widget: string}, {label: Description, name: description, widget: string}, {label: Items, name: items, widget: list}]}]}
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "about-page",
+            }
+          - { label: "标题", name: "title", widget: "string" }
+          - {
+              label: "主图",
+              name: "headerImage",
+              widget: "object",
+              fields:
+                [
+                  { label: "图片", name: "image", widget: "image" },
+                  { label: "图片说明", name: "imageAlt", widget: "string" },
+                ],
+            }
+          - {
+              label: "战略合作",
+              name: "cooperation",
+              widget: "object",
+              fields:
+                [
+                  { label: "标题", name: "title", widget: "string" },
+                  {
+                    label: "图片展示",
+                    name: "gallery",
+                    widget: "list",
+                    fields:
+                      [
+                        { label: "图片", name: "image", widget: "image" },
+                        {
+                          label: "图片说明",
+                          name: "imageAlt",
+                          widget: "string",
+                        },
+                        { label: "名称", name: "name", widget: "string" },
+                      ],
+                  },
+                ],
+            }
+            - {
+              label: "Call to Actions",
+              name: "callToActions",
+              required: true,
+              widget: "object",
+              fields:
+                [
+                  {
+                    label: "First CTA",
+                    name: "firstCTA",
+                    required: true,
+                    widget: "object",
+                    fields:
+                      [
+                        { label: "Heading", name: "heading", widget: "string" },
+                        { label: "Sub Heading", name: "subHeading", widget: "string" },
+                        {
+                          label: "Link Type",
+                          name: "linkType",
+                          widget: "select",
+                          options: ["internal", "external"],
+                        },
+                        {
+                          label: "Link URL",
+                          name: "linkURL",
+                          widget: "string",
+                          hint: "Use a relative URL (e.g. /about) if the link is an internal link.",
+                        }
+                      ]
+                  },
+                  {
+                    label: "Second CTA",
+                    name: "secondCTA",
+                    required: true,
+                    widget: "object",
+                    fields:
+                      [
+                        { label: "Heading", name: "heading", widget: "string" },
+                        { label: "Sub Heading", name: "subHeading", widget: "string" },
+                        {
+                          label: "Link Type",
+                          name: "linkType",
+                          widget: "select",
+                          options: ["internal", "external"],
+                        },
+                        {
+                          label: "Link URL",
+                          name: "linkURL",
+                          widget: "string",
+                          hint: "Use a relative URL (e.g. /about) if the link is an internal link.",
+                        }
+                      ]
+                  }
+                ],
+            }
+          - {
+              label: "SEO & Meta",
+              name: "seo",
+              widget: "object",
+              fields:
+                [
+                  {
+                    label: "Browser Tab Title",
+                    name: "browserTitle",
+                    widget: "string",
+                  },
+                  { label: "Title", name: "title", widget: "string" },
+                  {
+                    label: "Description",
+                    name: "description",
+                    widget: "string",
+                  },
+                ],
+            }
+            # - file: "src/pages/index.md"
+      #   label: "Landing Page"
+      #   name: "index"
+      #   fields:
+      #     - {
+      #         label: "Template Key",
+      #         name: "templateKey",
+      #         widget: "hidden",
+      #         default: "index-page",
+      #       }
+      #     - { label: Title, name: title, widget: string }
+      #     - { label: Image, name: image, widget: image }
+      #     - { label: Heading, name: heading, widget: string }
+      #     - { label: Subheading, name: subheading, widget: string }
+      #     - {
+      #         label: Mainpitch,
+      #         name: mainpitch,
+      #         widget: object,
+      #         fields:
+      #           [
+      #             { label: Title, name: title, widget: string },
+      #             { label: Description, name: description, widget: text },
+      #           ],
+      #       }
+      #     - { label: Description, name: description, widget: string }
+      #     - {
+      #         label: Intro,
+      #         name: intro,
+      #         widget: object,
+      #         fields:
+      #           [
+      #             { label: Heading, name: heading, widget: string },
+      #             { label: Description, name: description, widget: text },
+      #             {
+      #               label: Blurbs,
+      #               name: blurbs,
+      #               widget: list,
+      #               fields:
+      #                 [
+      #                   { label: Image, name: image, widget: image },
+      #                   { label: Text, name: text, widget: text },
+      #                 ],
+      #             },
+      #           ],
+      #       }
+      #     - {
+      #         label: Main,
+      #         name: main,
+      #         widget: object,
+      #         fields:
+      #           [
+      #             { label: Heading, name: heading, widget: string },
+      #             { label: Description, name: description, widget: text },
+      #             {
+      #               label: Image1,
+      #               name: image1,
+      #               widget: object,
+      #               fields:
+      #                 [
+      #                   { label: Image, name: image, widget: image },
+      #                   { label: Alt, name: alt, widget: string },
+      #                 ],
+      #             },
+      #             {
+      #               label: Image2,
+      #               name: image2,
+      #               widget: object,
+      #               fields:
+      #                 [
+      #                   { label: Image, name: image, widget: image },
+      #                   { label: Alt, name: alt, widget: string },
+      #                 ],
+      #             },
+      #             {
+      #               label: Image3,
+      #               name: image3,
+      #               widget: object,
+      #               fields:
+      #                 [
+      #                   { label: Image, name: image, widget: image },
+      #                   { label: Alt, name: alt, widget: string },
+      #                 ],
+      #             },
+      #           ],
+      #       }
+      # - file: "src/pages/products/index.md"
+      #   label: "产品"
+      #   name: "products"
+      #   fields:
+      #     - {
+      #         label: "Template Key",
+      #         name: "templateKey",
+      #         widget: "hidden",
+      #         default: "product-page",
+      #       }
+      #     - { label: Title, name: title, widget: string }
+      #     - { label: Image, name: image, widget: image }
+      #     - { label: Heading, name: heading, widget: string }
+      #     - { label: Description, name: description, widget: string }
+      #     - {
+      #         label: Intro,
+      #         name: intro,
+      #         widget: object,
+      #         fields:
+      #           [
+      #             { label: Heading, name: heading, widget: string },
+      #             { label: Description, name: description, widget: text },
+      #             {
+      #               label: Blurbs,
+      #               name: blurbs,
+      #               widget: list,
+      #               fields:
+      #                 [
+      #                   { label: Image, name: image, widget: image },
+      #                   { label: Text, name: text, widget: text },
+      #                 ],
+      #             },
+      #           ],
+      #       }
+      #     - {
+      #         label: Main,
+      #         name: main,
+      #         widget: object,
+      #         fields:
+      #           [
+      #             { label: Heading, name: heading, widget: string },
+      #             { label: Description, name: description, widget: text },
+      #             {
+      #               label: Image1,
+      #               name: image1,
+      #               widget: object,
+      #               fields:
+      #                 [
+      #                   { label: Image, name: image, widget: image },
+      #                   { label: Alt, name: alt, widget: string },
+      #                 ],
+      #             },
+      #             {
+      #               label: Image2,
+      #               name: image2,
+      #               widget: object,
+      #               fields:
+      #                 [
+      #                   { label: Image, name: image, widget: image },
+      #                   { label: Alt, name: alt, widget: string },
+      #                 ],
+      #             },
+      #             {
+      #               label: Image3,
+      #               name: image3,
+      #               widget: object,
+      #               fields:
+      #                 [
+      #                   { label: Image, name: image, widget: image },
+      #                   { label: Alt, name: alt, widget: string },
+      #                 ],
+      #             },
+      #           ],
+      #       }
+      #     - {
+      #         label: Testimonials,
+      #         name: testimonials,
+      #         widget: list,
+      #         fields:
+      #           [
+      #             { label: Quote, name: quote, widget: string },
+      #             { label: Author, name: author, widget: string },
+      #           ],
+      #       }
+      #     - { label: Full_image, name: full_image, widget: image }
+      #     - {
+      #         label: Pricing,
+      #         name: pricing,
+      #         widget: object,
+      #         fields:
+      #           [
+      #             { label: Heading, name: heading, widget: string },
+      #             { label: Description, name: description, widget: string },
+      #             {
+      #               label: Plans,
+      #               name: plans,
+      #               widget: list,
+      #               fields:
+      #                 [
+      #                   { label: Plan, name: plan, widget: string },
+      #                   { label: Price, name: price, widget: string },
+      #                   {
+      #                     label: Description,
+      #                     name: description,
+      #                     widget: string,
+      #                   },
+      #                   { label: Items, name: items, widget: list },
+      #                 ],
+      #             },
+      #           ],
+      #       }

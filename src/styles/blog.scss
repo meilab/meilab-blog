@@ -1,0 +1,52 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+.blog {
+  &-content {
+    display: flex;
+    justify-content: center;
+    &-container {
+      width: 100%;
+      // padding: $section-padding-mobile 20px;
+      display: flex;
+      max-width: 800px;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-bottom: -40px;
+      padding: 0 20px;
+
+      @include respond-to("medium") {
+        //   padding: $section-padding 20px;
+      }
+    }
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    &:hover {
+      color: $blog-title;
+    }
+    margin-bottom: 4rem;
+  }
+
+  &-title {
+    color: $blog-title;
+    font-weight: 600;
+    line-height: 1.125;
+    font-size: 40px;
+    margin-bottom: 8px;
+  }
+
+  &-date {
+    color: $blog-date;
+    max-width: 100%;
+    margin-bottom: 16px;
+  }
+  &-description {
+    color: $blog-content;
+    max-width: 100%;
+  }
+}
