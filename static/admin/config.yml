@@ -126,7 +126,7 @@ collections:
               label: "Template Key",
               name: "templateKey",
               widget: "hidden",
-              default: "about-page",
+              default: "index-page",
             }
           - { label: "标题", name: "title", widget: "string" }
           - {
@@ -163,7 +163,7 @@ collections:
                   },
                 ],
             }
-            - {
+          - {
               label: "Call to Actions",
               name: "callToActions",
               required: true,
@@ -178,7 +178,11 @@ collections:
                     fields:
                       [
                         { label: "Heading", name: "heading", widget: "string" },
-                        { label: "Sub Heading", name: "subHeading", widget: "string" },
+                        {
+                          label: "Sub Heading",
+                          name: "subHeading",
+                          widget: "string",
+                        },
                         {
                           label: "Link Type",
                           name: "linkType",
@@ -190,8 +194,8 @@ collections:
                           name: "linkURL",
                           widget: "string",
                           hint: "Use a relative URL (e.g. /about) if the link is an internal link.",
-                        }
-                      ]
+                        },
+                      ],
                   },
                   {
                     label: "Second CTA",
@@ -201,7 +205,11 @@ collections:
                     fields:
                       [
                         { label: "Heading", name: "heading", widget: "string" },
-                        { label: "Sub Heading", name: "subHeading", widget: "string" },
+                        {
+                          label: "Sub Heading",
+                          name: "subHeading",
+                          widget: "string",
+                        },
                         {
                           label: "Link Type",
                           name: "linkType",
@@ -213,9 +221,9 @@ collections:
                           name: "linkURL",
                           widget: "string",
                           hint: "Use a relative URL (e.g. /about) if the link is an internal link.",
-                        }
-                      ]
-                  }
+                        },
+                      ],
+                  },
                 ],
             }
           - {
