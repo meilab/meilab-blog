@@ -10,7 +10,7 @@ import Layout from "../components/Layout";
 import CustomLink from "../components/CustomLink";
 import "../styles/home.scss";
 import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
-import KidsRoll from "../components/kidsRoll";
+import KidsRoll from "../components/KidsRoll";
 import DailycodingRoll from "../components/DailycodingRoll";
 import TwolangRoll from "../components/TwolangRoll";
 import ProjectRoll from "../components/ProjectRoll";
