@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { NotificationsPostTemplate } from "../../templates/dailycoding-post";
+import { DailycodingPostTemplate } from "../../templates/dailycoding-post";
 
 const NotificationsPreview = ({ entry, widgetFor }) => {
   const tags = entry.getIn(["data", "tags"]);
   return (
-    <NotificationsPostTemplate
+    <DailycodingPostTemplate
       content={widgetFor("body")}
       description={entry.getIn(["data", "description"])}
       tags={tags && tags.toJS()}

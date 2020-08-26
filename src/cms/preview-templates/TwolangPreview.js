@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { NewsPostTemplate } from "../../templates/twolang-post";
+import { TwolangPostTemplate } from "../../templates/twolang-post";
 
 const NewsPreview = ({ entry, widgetFor }) => {
   const tags = entry.getIn(["data", "tags"]);
   return (
-    <NewsPostTemplate
+    <TwolangPostTemplate
       content={widgetFor("body")}
       description={entry.getIn(["data", "description"])}
       tags={tags && tags.toJS()}
