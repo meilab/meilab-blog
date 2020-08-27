@@ -9,7 +9,6 @@ import Content, { HTMLContent } from "../components/Content";
 export const TwolangPostTemplate = ({
   content,
   contentComponent,
-  description,
   date,
   tags,
   title,
@@ -27,7 +26,6 @@ export const TwolangPostTemplate = ({
               {title}
             </h1>
             <div className="blog-date">{date}</div>
-            <p>{description}</p>
             <PostContent content={content} />
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
@@ -51,7 +49,6 @@ export const TwolangPostTemplate = ({
 TwolangPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
-  description: PropTypes.string,
   date: PropTypes.string,
   title: PropTypes.string,
   helmet: PropTypes.object,
@@ -65,15 +62,11 @@ const TwolangPost = ({ data }) => {
       <TwolangPostTemplate
         content={post.html}
         contentComponent={HTMLContent}
-        description={post.frontmatter.description}
         date={post.frontmatter.date}
         helmet={
           <Helmet titleTemplate="%s | 程序员2郎">
             <title>{`${post.frontmatter.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.frontmatter.description}`}
-            />
+            <meta name="description" content={`${post.html}`} />
           </Helmet>
         }
         tags={post.frontmatter.tags}
@@ -99,7 +92,6 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
-        description
         tags
       }
     }

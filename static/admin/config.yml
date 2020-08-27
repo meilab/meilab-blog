@@ -69,9 +69,9 @@ collections:
         }
       - { label: "标题", name: "title", widget: "string" }
       - { label: "发布日期", name: "date", widget: "datetime" }
-      - { label: "说明", name: "description", widget: "text" }
       - { label: "重要文章", name: "featuredpost", widget: "boolean" }
-      - { label: "图片", name: "featuredimage", widget: image }
+      - { label: "说明", name: "description", widget: "text" }
+      - { label: "图片", name: "featuredimage", required: false, widget: image }
       - { label: "正文", name: "body", widget: "markdown" }
       - { label: "标签", name: "tags", widget: "list" }
 
@@ -89,9 +89,8 @@ collections:
         }
       - { label: "标题", name: "title", widget: "string" }
       - { label: "发布日期", name: "date", widget: "datetime" }
-      - { label: "说明", name: "description", widget: "text" }
       - { label: "重要文章", name: "featuredpost", widget: "boolean" }
-      - { label: "图片", name: "featuredimage", widget: image }
+      - { label: "图片", name: "featuredimage", required: false, widget: image }
       - { label: "正文", name: "body", widget: "markdown" }
       - { label: "标签", name: "tags", widget: "list" }
 
@@ -109,9 +108,8 @@ collections:
         }
       - { label: "标题", name: "title", widget: "string" }
       - { label: "发布日期", name: "date", widget: "datetime" }
-      - { label: "说明", name: "description", widget: "text" }
       - { label: "重要文章", name: "featuredpost", widget: "boolean" }
-      - { label: "图片", name: "featuredimage", widget: image }
+      - { label: "图片", name: "featuredimage", required: false, widget: image }
       - { label: "正文", name: "body", widget: "markdown" }
       - { label: "标签", name: "tags", widget: "list" }
 

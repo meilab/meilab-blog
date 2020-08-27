@@ -9,7 +9,6 @@ import Content, { HTMLContent } from "../components/Content";
 export const DailycodingPostTemplate = ({
   content,
   contentComponent,
-  description,
   tags,
   title,
   date,
@@ -27,7 +26,6 @@ export const DailycodingPostTemplate = ({
               {title}
             </h1>
             <div className="blog-date">{date}</div>
-            <p>{description}</p>
             <PostContent content={content} />
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
@@ -51,7 +49,6 @@ export const DailycodingPostTemplate = ({
 DailycodingPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
-  description: PropTypes.string,
   date: PropTypes.string,
   title: PropTypes.string,
   helmet: PropTypes.object,
@@ -66,14 +63,10 @@ const DailycodingPost = ({ data }) => {
         content={post.html}
         contentComponent={HTMLContent}
         date={post.frontmatter.date}
-        description={post.frontmatter.description}
         helmet={
           <Helmet titleTemplate="%s | 少儿编程">
             <title>{`${post.frontmatter.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.frontmatter.description}`}
-            />
+            <meta name="description" content={`${post.html}`} />
           </Helmet>
         }
         tags={post.frontmatter.tags}
@@ -99,7 +92,6 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
-        description
         tags
       }
     }

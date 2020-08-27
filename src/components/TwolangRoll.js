@@ -14,9 +14,7 @@ function TwolangRoll({ data }) {
             <Link className="blog-item" key={post.id} to={post.fields.slug}>
               <div className="blog-title">{post.frontmatter.title}</div>
               <div className="blog-date">{post.frontmatter.date}</div>
-              <div className="blog-description">
-                {post.frontmatter.description}
-              </div>
+              <div className="blog-description">{post.html}</div>
             </Link>
           ))}
       </div>
@@ -44,6 +42,7 @@ export default () => (
             node {
               excerpt(pruneLength: 400)
               id
+              html
               fields {
                 slug
               }
@@ -52,7 +51,6 @@ export default () => (
                 templateKey
                 date(formatString: "MMMM DD, YYYY")
                 featuredpost
-                description
                 featuredimage {
                   childImageSharp {
                     fluid(maxWidth: 120, quality: 100) {
