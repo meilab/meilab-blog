@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { TwolangPostTemplate } from "../../templates/twolang-post";
+import { XldPostTemplate } from "../../templates/xld-post";
 
-const TwolangPreview = ({ entry, widgetFor }) => {
+const XldPreview = ({ entry, widgetFor }) => {
   const tags = entry.getIn(["data", "tags"]);
   return (
-    <TwolangPostTemplate
+    <XldPostTemplate
       content={widgetFor("body")}
       description={entry.getIn(["data", "description"])}
       tags={tags && tags.toJS()}
@@ -14,11 +14,11 @@ const TwolangPreview = ({ entry, widgetFor }) => {
   );
 };
 
-TwolangPreview.propTypes = {
+XldPreview.propTypes = {
   entry: PropTypes.shape({
     getIn: PropTypes.func,
   }),
   widgetFor: PropTypes.func,
 };
 
-export default TwolangPreview;
+export default XldPreview;

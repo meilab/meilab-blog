@@ -6,7 +6,7 @@ import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
 
-export const TwolangPostTemplate = ({
+export const XldPostTemplate = ({
   content,
   contentComponent,
   date,
@@ -46,7 +46,7 @@ export const TwolangPostTemplate = ({
   );
 };
 
-TwolangPostTemplate.propTypes = {
+XldPostTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
   date: PropTypes.string,
@@ -54,12 +54,12 @@ TwolangPostTemplate.propTypes = {
   helmet: PropTypes.object,
 };
 
-const TwolangPost = ({ data }) => {
+const XldPost = ({ data }) => {
   const { markdownRemark: post } = data;
 
   return (
     <Layout>
-      <TwolangPostTemplate
+      <XldPostTemplate
         content={post.html}
         contentComponent={HTMLContent}
         date={post.frontmatter.date}
@@ -76,16 +76,16 @@ const TwolangPost = ({ data }) => {
   );
 };
 
-TwolangPost.propTypes = {
+XldPost.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.object,
   }),
 };
 
-export default TwolangPost;
+export default XldPost;
 
 export const pageQuery = graphql`
-  query TwolangPostByID($id: String!) {
+  query XldPostByID($id: String!) {
     markdownRemark(id: { eq: $id }) {
       id
       html
