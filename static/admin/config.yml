@@ -128,30 +128,30 @@ collections:
       - { label: "正文", name: "body", widget: "markdown" }
       - { label: "标签", name: "tags", widget: "list" }
 
-    - name: "xld"
-      label: "小领导"
-      folder: "src/pages/xld"
-      create: true
-      slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-      fields:
-        - {
-            label: "Template Key",
-            name: "templateKey",
-            widget: "hidden",
-            default: "xld-post",
-          }
-        - { label: "标题", name: "title", widget: "string" }
-        - { label: "发布日期", name: "date", widget: "datetime" }
-        - {
-            label: "重要文章",
-            name: "featuredpost",
-            required: false,
-            widget: "boolean",
-          }
-        - { label: "图片", name: "featuredimage", required: false, widget: image }
-        - { label: "正文", name: "body", widget: "markdown" }
-        - { label: "标签", name: "tags", widget: "list" }
-  
+  - name: "xld"
+    label: "小领导"
+    folder: "src/pages/xld"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "xld-post",
+        }
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "发布日期", name: "date", widget: "datetime" }
+      - {
+          label: "重要文章",
+          name: "featuredpost",
+          required: false,
+          widget: "boolean",
+        }
+      - { label: "图片", name: "featuredimage", required: false, widget: image }
+      - { label: "正文", name: "body", widget: "markdown" }
+      - { label: "标签", name: "tags", widget: "list" }
+
   - name: "pages"
     label: "页面"
     files:
