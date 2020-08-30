@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link, graphql, StaticQuery } from "gatsby";
 import "../styles/blog.scss";
+import Content, { HTMLContent } from "../components/Content";
 
 function TwolangRoll({ data }) {
   const { edges: posts } = data.allMarkdownRemark;
@@ -14,7 +15,7 @@ function TwolangRoll({ data }) {
             <Link className="blog-item" key={post.id} to={post.fields.slug}>
               <div className="blog-title">{post.frontmatter.title}</div>
               <div className="blog-date">{post.frontmatter.date}</div>
-              <div className="blog-description">{post.html}</div>
+              <HTMLContent className="blog-description">{post.html}</HTMLContent>
             </Link>
           ))}
       </div>
