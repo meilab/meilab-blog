@@ -15,7 +15,10 @@ function TwolangRoll({ data }) {
             <Link className="blog-item" key={post.id} to={post.fields.slug}>
               <div className="blog-title">{post.frontmatter.title}</div>
               <div className="blog-date">{post.frontmatter.date}</div>
-              <HTMLContent className="blog-description">{post.html}</HTMLContent>
+              <HTMLContent
+                className="blog-description"
+                content={post.html}
+              ></HTMLContent>
             </Link>
           ))}
       </div>
