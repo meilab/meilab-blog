@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "../../components/Layout";
 import XldRoll from "../../components/XldRoll";
 
-export default class TrainingIndexPage extends React.Component {
+export default class XldIndexPage extends React.Component {
   render() {
     return (
       <Layout>

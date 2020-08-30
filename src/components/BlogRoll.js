@@ -6,7 +6,7 @@ import Content, { HTMLContent } from "../components/Content";
 import { lengthShow } from "../constant";
 import "../styles/blog.scss";
 
-function DailycodingRoll({ data, short }) {
+function BlogRoll({ data, short }) {
   const { edges: posts } = data.allMarkdownRemark;
   const len = short ? Math.min(posts.length, lengthShow) : posts.length;
   const content = posts && posts.slice(0, len - 1);
@@ -18,10 +18,9 @@ function DailycodingRoll({ data, short }) {
           <Link className="blog-item" key={post.id} to={post.fields.slug}>
             <div className="blog-title">{post.frontmatter.title}</div>
             <div className="blog-date">{post.frontmatter.date}</div>
-            <HTMLContent
-              className="blog-description"
-              content={post.html}
-            ></HTMLContent>
+            <div className="blog-description">
+              {post.frontmatter.description}
+            </div>
           </Link>
         ))}
       </div>
@@ -29,7 +28,7 @@ function DailycodingRoll({ data, short }) {
   );
 }
 
-DailycodingRoll.propTypes = {
+BlogRoll.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array,
@@ -40,10 +39,10 @@ DailycodingRoll.propTypes = {
 export default ({ short = false }) => (
   <StaticQuery
     query={graphql`
-      query DailycodingRollQuery {
+      query BlogRollQuery {
         allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___date] }
-          filter: { frontmatter: { templateKey: { eq: "dailycoding-post" } } }
+          filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
         ) {
           edges {
             node {
@@ -58,6 +57,7 @@ export default ({ short = false }) => (
                 templateKey
                 date(formatString: "MMMM DD, YYYY")
                 featuredpost
+                description
                 featuredimage {
                   childImageSharp {
                     fluid(maxWidth: 120, quality: 100) {
@@ -72,7 +72,7 @@ export default ({ short = false }) => (
       }
     `}
     render={(data, count) => (
-      <DailycodingRoll data={data} count={count} short={short} />
+      <BlogRoll data={data} count={count} short={short} />
     )}
   />
 );

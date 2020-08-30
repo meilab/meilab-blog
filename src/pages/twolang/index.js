@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "../../components/Layout";
 import TwolangRoll from "../../components/TwolangRoll";
 
-export default class TrainingIndexPage extends React.Component {
+export default class TwolangIndexPage extends React.Component {
   render() {
     return (
       <Layout>

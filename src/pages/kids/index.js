@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "../../components/Layout";
 import KidsRoll from "../../components/KidsRoll";
 
-export default class TrainingIndexPage extends React.Component {
+export default class KidsIndexPage extends React.Component {
   render() {
     return (
       <Layout>
