@@ -3,16 +3,18 @@ import PropTypes from "prop-types";
 import { Link, graphql, StaticQuery } from "gatsby";
 import ReactMarkdown from "react-markdown";
 import Content, { HTMLContent } from "../components/Content";
+import { lengthShow } from "../constant";
 import "../styles/blog.scss";
 
-function DailycodingRoll({ data }) {
+function DailycodingRoll({ data, short }) {
   const { edges: posts } = data.allMarkdownRemark;
+  const len = short ? Math.min(posts.length, lengthShow) : posts.length;
+  const content = posts && posts.slice(0, len - 1);
 
   return (
     <div className="blog-content">
       <div className="blog-content-container">
-        {posts &&
-          posts.map(({ node: post }) => (
+        {content.map(({ node: post }) => (
             <Link className="blog-item" key={post.id} to={post.fields.slug}>
               <div className="blog-title">{post.frontmatter.title}</div>
               <div className="blog-date">{post.frontmatter.date}</div>
@@ -35,7 +37,7 @@ DailycodingRoll.propTypes = {
   }),
 };
 
-export default () => (
+export default ({ short=false }) => (
   <StaticQuery
     query={graphql`
       query DailycodingRollQuery {
@@ -69,6 +71,6 @@ export default () => (
         }
       }
     `}
-    render={(data, count) => <DailycodingRoll data={data} count={count} />}
+    render={(data, count) => <DailycodingRoll data={data} count={count}  short={short} />}
   />
 );

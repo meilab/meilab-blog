@@ -53,7 +53,7 @@ export const HomePageTemplate = ({ home, upcomingGame = null }) => {
             <h3 className="trainings-title has-text-weight-semibold is-size-2">
               编程日课
             </h3>
-            <DailycodingRoll />
+            <DailycodingRoll short={true} />
             <div className="column is-12 has-text-centered">
               <Link className="btn" to="/dailycoding">
                 更多日课
@@ -83,7 +83,7 @@ export const HomePageTemplate = ({ home, upcomingGame = null }) => {
             <h3 className="trainings-title has-text-weight-semibold is-size-2">
               程序员2郎的日常
             </h3>
-            <TwolangRoll />
+            <TwolangRoll short={true} />
             <div className="column is-12 has-text-centered">
               <Link className="btn" to="/dailycoding">
                 更多日常

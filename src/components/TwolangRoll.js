@@ -3,15 +3,17 @@ import PropTypes from "prop-types";
 import { Link, graphql, StaticQuery } from "gatsby";
 import "../styles/blog.scss";
 import Content, { HTMLContent } from "../components/Content";
+import { lengthShow } from "../constant";
 
-function TwolangRoll({ data }) {
+function TwolangRoll({ data, short }) {
   const { edges: posts } = data.allMarkdownRemark;
+  const len = short ? Math.min(posts.length, lengthShow) : posts.length;
+  const content = posts && posts.slice(0, len - 1);
 
   return (
     <div className="blog-content">
       <div className="blog-content-container">
-        {posts &&
-          posts.map(({ node: post }) => (
+        {content.map(({ node: post }) => (
             <Link className="blog-item" key={post.id} to={post.fields.slug}>
               <div className="blog-title">{post.frontmatter.title}</div>
               <div className="blog-date">{post.frontmatter.date}</div>
@@ -34,7 +36,7 @@ TwolangRoll.propTypes = {
   }),
 };
 
-export default () => (
+export default ({ short=false }) => (
   <StaticQuery
     query={graphql`
       query TwolangRollQuery {
@@ -68,6 +70,8 @@ export default () => (
         }
       }
     `}
-    render={(data, count) => <TwolangRoll data={data} count={count} />}
+    render={(data, count) => (
+      <TwolangRoll data={data} count={count} short={short} />
+    )}
   />
 );
