@@ -5,6 +5,11 @@ import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
 import Content, { HTMLContent } from "../components/Content";
+import MessageList from "../components/Message/MessageList";
+import MessageBox from "../components/Message/MessageBox";
+// import "react-chat-elements/dist/main.css";
+import xldImg from "../img/xld.png";
+import profile from "../img/profile.jpeg";
 
 export const XldPostTemplate = ({
   content,
@@ -20,12 +25,41 @@ export const XldPostTemplate = ({
     <section className="section">
       {helmet || ""}
       <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
+        <div
+          style={{ justifyContent: "center", alignItems: "center" }}
+          className="columns"
+        >
+          <div className="column is-6">
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
             <div className="blog-date">{date}</div>
+            <MessageList
+              className="message-list"
+              lockable={true}
+
+              toBottomHeight={"100%"}
+              dataSource={[
+                {
+                  position: "left",
+                  forwarded: true,
+                  avatar: profile,
+                  type: "text",
+                  title: "hehe",
+                  view: "list",
+                  text:
+                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+                },
+                {
+                  position: "right",
+                  theme: "green",
+                  avatar: xldImg,
+                  type: "text",
+                  text:
+                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+                },
+              ]}
+            />
             <PostContent content={content} />
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>

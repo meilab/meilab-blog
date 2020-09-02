@@ -14,6 +14,9 @@ import KidsRoll from "../components/KidsRoll";
 import DailycodingRoll from "../components/DailycodingRoll";
 import TwolangRoll from "../components/TwolangRoll";
 import ProjectRoll from "../components/ProjectRoll";
+import profile from "../img/profile.jpeg";
+
+const imgWidth = "8em";
 
 export const HomePageTemplate = ({ home, upcomingGame = null }) => {
   const events = upcomingGame && upcomingGame.events;
@@ -45,6 +48,25 @@ export const HomePageTemplate = ({ home, upcomingGame = null }) => {
           <h3 className="header-tagline">
             <span className="header-taglinePart">{home.title}</span>
           </h3>
+        </div>
+      </section>
+      <section className="me section"
+                style={{
+                  maxWidth: "100%",
+                  backgroundSize: "cover",
+                  backgroundPosition: "bottom",
+                  backgroundImage: `url('/img/me-bg.jpg')`,
+                  color: "white"
+                }}>
+        <div className="me-container">
+          <img
+            src={profile}
+            alt="profile"
+            style={{ width: imgWidth, height: imgWidth, borderRadius: "50%", marginRight: 32 }}
+          />
+          <div>
+            <h2>小yi</h2>是一名全栈工程师，具有十年以上的大型系统软件开发经验。最早在华为和英特尔从事手机基带芯片开发，目前主要从事大前端开发。熟练使用多种编程语言和不同的编程范式，能够使用多种编程思想来解决问题。
+          </div>
         </div>
       </section>
       <section className="trainings section">

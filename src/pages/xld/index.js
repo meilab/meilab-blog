@@ -22,7 +22,7 @@ export default class XldIndexPage extends React.Component {
               padding: "1rem",
             }}
           >
-            程序员日常
+            小领导日常
           </h1>
         </div>
         <section className="section">

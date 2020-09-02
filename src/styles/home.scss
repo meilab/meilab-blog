@@ -228,6 +228,7 @@
   }
 }
 
+.me,
 .projects,
 .trainings,
 .notificationsAndNews {
@@ -249,6 +250,16 @@
     margin-bottom: 30px;
     text-align: center;
     align-self: center;
+  }
+}
+
+.me {
+    &-container {
+    margin: 20px 40px;
+    padding: 20px 40px;
+    max-width: 800px;
+    flex-direction:row;
+    justify-content: center;
   }
 }
 
