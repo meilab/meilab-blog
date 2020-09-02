@@ -43,7 +43,7 @@ export class MessageBox extends Component {
                     /> : this.renderDummy()}
       <div
         ref="message"
-        className={classNames("rce-container-mbox", this.props.className)}
+        className={classNames("rce-container-mbox", this.props.position, this.props.className)}
         onClick={this.props.onClick}
       >
                            {this.props.notch &&

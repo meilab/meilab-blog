@@ -18,6 +18,10 @@
   min-width: 200px;
 }
 
+.rce-container-mbox.right {
+  justify-content: flex-end;
+}
+
 .rce-mbox-forward {
   width: 30px;
   height: 30px;

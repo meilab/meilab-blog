@@ -20,6 +20,32 @@ export const XldPostTemplate = ({
   helmet,
 }) => {
   const PostContent = contentComponent || Content;
+  let str = content.replace("<p>","")
+  str = str.replace("</p>","")
+  const msgs = JSON.parse(str)
+  const dataSource = msgs.map((item)=> {
+    let message = {}
+    if(item.role === 'daddy'){
+      message = {
+        position: "left",
+        forwarded: true,
+        avatar: profile,
+        type: "text",
+        view: "list",
+        text:item.msg,
+      };
+    } else {
+      message = {
+        position: "right",
+        theme: "green",
+        avatar: xldImg,
+        type: "text",
+        text:item.msg,
+      };
+    }
+
+    return message;
+  })
 
   return (
     <section className="section">
@@ -39,26 +65,7 @@ export const XldPostTemplate = ({
               lockable={true}
 
               toBottomHeight={"100%"}
-              dataSource={[
-                {
-                  position: "left",
-                  forwarded: true,
-                  avatar: profile,
-                  type: "text",
-                  title: "hehe",
-                  view: "list",
-                  text:
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-                },
-                {
-                  position: "right",
-                  theme: "green",
-                  avatar: xldImg,
-                  type: "text",
-                  text:
-                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-                },
-              ]}
+              dataSource={dataSource}
             />
             <PostContent content={content} />
             {tags && tags.length ? (
